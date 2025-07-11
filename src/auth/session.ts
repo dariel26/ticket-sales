@@ -19,6 +19,6 @@ export default class Session {
     const userRole = await prisma.userRole.findUnique({ where: { userId: session.user.id } });
     if (!userRole) redirect("/auth/awaiting-approval");
 
-    return { ...session, userRole: userRole as unknown as Role };
+    return { ...session, userRole: userRole.role };
   }
 }
