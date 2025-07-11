@@ -4,7 +4,7 @@ import Validator from "./validator";
 export const addNewTicketSchema = z.object({
   userName: z.string().nonempty({ message: "Campo obrigatório." }),
   userCPF: z.string().min(11, { message: "Mín. 11" }).max(11, { message: "Máx. 11" }),
-  userEmail: z.string().nonempty({ message: "Campo obrigatório." }).email({ message: "E-mail inválido." }),
+  userEmail: z.string().nonempty({ message: "Campo obrigatório." }).email({ message: "E-mail inválido." }).optional(),
   userPhone: z.string().nonempty({ message: "Campo obrigatório." }),
   batchId: z.string().nonempty({ message: "Campo obrigatório." }),
   observation: z.string().optional(),
@@ -26,7 +26,7 @@ export const updateTicketSchema = z.object({
   ticketId: z.string().nonempty({ message: "Campo obrigatório." }),
   userName: z.string().nonempty({ message: "Campo obrigatório." }),
   userCPF: z.string().min(11, { message: "Mín. 11" }).max(11, { message: "Máx. 11" }),
-  userEmail: z.string().nonempty({ message: "Campo obrigatório." }).email({ message: "E-mail inválido." }),
+  userEmail: z.string().nonempty({ message: "Campo obrigatório." }).email({ message: "E-mail inválido." }).optional(),
   userPhone: z.string().nonempty({ message: "Campo obrigatório." }),
   batchId: z.string().nonempty({ message: "Campo obrigatório." }),
   observation: z.string().optional(),

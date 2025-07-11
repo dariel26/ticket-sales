@@ -28,7 +28,7 @@ export default function FormDialogNewManTicket({ children, parties }: FormDialog
 
   const form = useForm<AddNewTicketData>({
     resolver: zodResolver(addNewTicketSchema),
-    defaultValues: { userName: "", userCPF: "", userEmail: "", userPhone: "", batchId: "", observation: undefined },
+    defaultValues: { userName: "", userCPF: "", userEmail: undefined, userPhone: "", batchId: "", observation: undefined },
   });
 
   const handleOnSubmit = useCallback(

@@ -125,7 +125,7 @@ model Batch {
 model Ticket {
   id           String    @id @default(cuid())
   ticketNumber Int
-  userEmail    String
+  userEmail    String?
   userName     String
   userCPF      String
   userPhone    String

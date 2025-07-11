@@ -34,7 +34,7 @@ export default function FormDialogUpdateTicket({ parties, ticket }: FormDialogUp
       ticketId: ticket.id,
       userName: ticket.userName,
       userCPF: ticket.userCPF,
-      userEmail: ticket.userEmail,
+      userEmail: ticket.userEmail ?? undefined,
       userPhone: ticket.userPhone,
       batchId: ticket.batchId,
       observation: ticket.observation ?? undefined,
