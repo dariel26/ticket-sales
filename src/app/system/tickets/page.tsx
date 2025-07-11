@@ -48,6 +48,7 @@ export default async function TicketsPage(props: { searchParams: Promise<SearchP
           <TableHeader>
             <TableRow>
               <TableHead>Nº Ingresso</TableHead>
+              <TableHead>Lote</TableHead>
               <TableHead>Vendedor</TableHead>
               <TableHead>Comprador</TableHead>
               <TableHead>CPF</TableHead>
@@ -62,6 +63,7 @@ export default async function TicketsPage(props: { searchParams: Promise<SearchP
             {tickets.map((ticket) => (
               <TableRow key={ticket.id} className={cn(ticket.confirmedAt && "bg-green-400/25")}>
                 <TableCell>{ticket.ticketNumber}</TableCell>
+                <TableCell>{ticket.batch.name}</TableCell>
                 <TableCell>{ticket.seller.name}</TableCell>
                 <TableCell>{ticket.userName}</TableCell>
                 <TableCell>{ticket.userCPF}</TableCell>
