@@ -118,7 +118,7 @@ export default function FormDialogNewManTicket({ children, parties }: FormDialog
                 name="userEmail"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>E-mail</FormLabel>
+                    <FormLabel>E-mail (Opcional)</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
