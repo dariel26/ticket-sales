@@ -40,11 +40,11 @@ export default async function Parties() {
           const disponibleBatch = party.batches.find((b) => b.currentAmount > 0);
 
           return (
-            <Card className="h-[max-content] w-[max-content] gap-0 pt-0" key={party.id}>
+            <Card className="h-[max-content] w-full max-w-[28rem] gap-0 pt-0" key={party.id}>
               <div className="relative mb-6 flex w-full overflow-hidden rounded-t-[inherit]">
                 <Image
-                  className="bg-accent flex aspect-[2/1] w-[28rem] object-cover"
-                  width={400}
+                  className="bg-accent flex aspect-[2/1] w-full object-cover"
+                  width={200}
                   height={100}
                   src={"/art.webp"}
                   alt={party.name}

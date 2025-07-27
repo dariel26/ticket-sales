@@ -16,7 +16,12 @@ import {
 
 const LIMIT_PER_PAGE = 100;
 
-export async function getAllTickets(filters?: { search?: string; page?: number }) {
+export async function getAllTickets(filters?: {
+  search?: string;
+  page?: number;
+  orderType?: "asc" | "desc";
+  orderBy?: "ticketNumber" | "userName" | "confirmedAt";
+}) {
   await Session.getOrRedirect();
 
   const skip = filters?.page ? (filters.page - 1) * LIMIT_PER_PAGE : 0;
@@ -31,7 +36,7 @@ export async function getAllTickets(filters?: { search?: string; page?: number }
       ],
     },
     include: { batch: { include: { party: true } }, seller: true },
-    orderBy: { purchasedAt: "desc" },
+    orderBy: filters?.orderBy ? { [filters.orderBy]: filters.orderType ?? "asc" } : undefined,
     skip,
     take: LIMIT_PER_PAGE,
   });
@@ -105,6 +110,9 @@ export const updateTicket = catchAsync(async (_state, formData) => {
 
   if (ticketToUpdate.sellerId !== session.user.id && session.userRole !== Role.ADMIN)
     throw new ApiError(403, "Somente administradores ou o responsável pela venta do ingresso podem editar.");
+
+  if (ticketToUpdate.confirmedAt && session.userRole !== Role.ADMIN)
+    throw new ApiError(403, "Somente administradores podem editar ingressos que já foram confirmados.");
 
   const batch = await prisma.batch.findUnique({ where: { id: data.batchId } });
   if (!batch) throw new ApiError(400, "Lote não encontrado.");

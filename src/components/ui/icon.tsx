@@ -145,3 +145,11 @@ export function IconTrash2(props: React.ComponentProps<"svg">) {
     </Svg>
   );
 }
+
+export function IconChevronDown(props: React.ComponentProps<"svg">) {
+  return (
+    <Svg {...props}>
+      <path d="m6 9 6 6 6-6" />
+    </Svg>
+  );
+}

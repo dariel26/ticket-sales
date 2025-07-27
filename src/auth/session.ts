@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma/prisma";
-import { Session as NextAuthSession } from "next-auth";
 
+import { Session as NextAuthSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { auth } from "./handlers";
 import { Role } from "@prisma/client";

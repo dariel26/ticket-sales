@@ -47,8 +47,6 @@ export default function FormDialogUpdateTicket({ parties, ticket }: FormDialogUp
       try {
         const res = await updateTicket(undefined, FormDataConverter.from(data));
         if (res?.error) return alert(res.error);
-
-        form.reset();
         router.refresh();
         setOpen(false);
       } catch (err: unknown) {
@@ -58,7 +56,7 @@ export default function FormDialogUpdateTicket({ parties, ticket }: FormDialogUp
         setPending(false);
       }
     },
-    [router, form]
+    [router]
   );
 
   return (
@@ -178,15 +176,7 @@ export default function FormDialogUpdateTicket({ parties, ticket }: FormDialogUp
                 <FormItem>
                   <FormLabel>Observação (opcional)</FormLabel>
                   <FormControl>
-                    <Textarea
-                      {...field}
-                      rows={3}
-                      onChange={(e) => {
-                        if (e.target.value === "")
-                          Object.assign(e, { ...e, target: { ...e.target, value: undefined } });
-                        field.onChange(e);
-                      }}
-                    />
+                    <Textarea {...field} rows={3} />
                   </FormControl>
                 </FormItem>
               )}
