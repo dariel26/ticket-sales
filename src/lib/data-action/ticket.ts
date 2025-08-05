@@ -43,7 +43,7 @@ export async function getAllTickets(filters?: {
 }
 
 export const addNewTicketManually = catchAsync(async (_state, formData) => {
-  const rolesWithAccess: Role[] = [Role.ADMIN, Role.SALE_PERSON];
+  const rolesWithAccess: Role[] = [Role.ADMIN, Role.SALE_PERSON, Role.TREASURE];
   const session = await Session.getOrRedirect();
   if (!rolesWithAccess.includes(session.userRole)) throw new ApiError(403, "Você não possui permissão para isto.");
 
@@ -90,7 +90,7 @@ export const addNewTicketManually = catchAsync(async (_state, formData) => {
 });
 
 export const updateTicket = catchAsync(async (_state, formData) => {
-  const rolesWithAccess: Role[] = [Role.ADMIN, Role.SALE_PERSON];
+  const rolesWithAccess: Role[] = [Role.ADMIN, Role.SALE_PERSON, Role.TREASURE];
   const session = await Session.getOrRedirect();
   if (!rolesWithAccess.includes(session.userRole)) throw new ApiError(403, "Você não possui permissão para isto.");
 
@@ -160,7 +160,7 @@ export const confirmTicket = catchAsync(async (_state, formData) => {
 });
 
 export const deleteTicket = catchAsync(async (_state, formData) => {
-  const rolesWithAccess: Role[] = [Role.ADMIN, Role.SALE_PERSON];
+  const rolesWithAccess: Role[] = [Role.ADMIN, Role.SALE_PERSON, Role.TREASURE];
   const session = await Session.getOrRedirect();
   if (!rolesWithAccess.includes(session.userRole)) throw new ApiError(403, "Você não possui permissão para isto.");
 
